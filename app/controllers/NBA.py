@@ -7,6 +7,8 @@
     Create a controller using this template
 """
 from system.core.controller import *
+from lxml import html
+import requests
 import urllib
 import urllib2
 
@@ -27,24 +29,35 @@ class NBA(Controller):
         A loaded model is accessible through the models attribute 
         self.models['WelcomeModel'].get_all_users()
         """
-        url = "https://erikberg.com/nba/teams.json"
-        headers = {'User-agent': "MyRobot:1.0 email@example.com"}
-        req = urllib2.Request(url, headers=headers)
-        response = urllib2.urlopen(req).read()
 
-        return self.load_view('index.html', response=response)
+
+        return self.load_view('index.html')
 
     def retrieve_teams(self):
-        print "RETRIEVING TEAMS"
-
-        url = "https://erikberg.com/nba/teams.json"
-        headers = {'User-agent': "MyRobot:1.0 email@example.com"}
-        req = urllib2.Request(url, headers=headers)
-        response = urllib2.urlopen(req).read()
+        print "Retrieve Teams"
 
 
-        # notice this is 'requests' not 'request'
-        # we are using the request modules, 'get' function to send a request from our controller
-        # then we use ".content" to get the content we are looking for
 
-        return self.load_view('index.html', response=response)
+        # url = "https://erikberg.com/nba/teams.json"
+        # headers = {'User-agent': "MyRobot:1.0 email@example.com"}
+        # req = urllib2.Request(url, headers=headers)
+        # response = urllib2.urlopen(req).read()
+
+        # return response
+
+    def data_scraping(self):
+        pass
+
+    def retrieve_listings(self):
+        print "Retrieve Listings"
+
+        url = "https://www.ticketcity.com/catalog/events/performer/1354/11-24-2015/11-24-2033?PageNum=1&PageSize=25"
+
+        response = requests.get(url).content
+
+        # print response
+
+        return response
+
+
+

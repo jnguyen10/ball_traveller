@@ -2,35 +2,48 @@
 <html>
 	<head>
 		<meta charset='utf-8'>
-		<title>Ball Traveler</title>
+		<title>Ball Traveller</title>
 		<link rel="stylesheet" href="static/css/styles.css" type="text/css">
 		<script src="https://code.jquery.com/jquery-2.1.3.js"></script>
-		// <script>
-		// 	$(document).ready(function(){
+		<script>
+			$(document).ready(function(){
 
-		// 		$.get("/retrieve_teams", function(res){
-		// 			console.log(res);
-		// 			// var abbr, full_name, conference, site_name, city, state
+				$.get("/retrieve_listings", function(res){
+					var event_name, event_date, venue, city, state
+					// LOOP TO GET A TEAM LISTING
+					for (var i=0; i < res['EventListings'].length; i++){
+						event_name = "<p>"+res['EventListings'][i]['EventName']+"</p>";
+						event_date = "<p>"+res['EventListings'][i]['Event_Date']+"</p>";
+						venue = "<p>"+res['EventListings'][i]['VenueName']+"</p>";
+						city = "<p>"+res['EventListings'][i]['City']+"</p>";
+						state = "<p>"+res['EventListings'][i]['State']+"</p>";
 
-		// 			// for (var i=0; i < res.length; i++){
-		// 			// 	abbr = "<h2>"+res['abbreviation']+"</h2>";
-		// 			// 	full_name = "<h3>"+res['full_name']+"</h3>";
-		// 			// 	conference = "<p>"+res['conference']+"</p>";;
-		// 			// 	site_name = "<p>"+res['site_name']+"</p>";
-		// 			// 	city = "<p>"+res['city']+"</p>";
-		// 			// 	state = "<p>"+res['state']+"</p>";
+						$("#user_team").append(
+							"<div class='team_schedule'>"+event_name+"<br>"+event_date+"<br>"+venue+"<br>"+city+"<br>"+state+"</div>");
+					};
 
-		// 			// 	$("#info").html(
-		// 			// 		"<div id='info'>"+abbr+"<br>"+full_name+"<br>"+conference+"<br>"+site_name+"<br>"+city+"<br>"+state+"</div>");
-		// 			}, "JSON");
-		// 	});
-		// </script>
+
+
+					// LOOP TO GET TEAM INFO
+					// for (var i=0; i < res.length; i++){
+					// 	abbr = "<h2>"+res[i]['abbreviation']+"</h2>";
+					// 	full_name = "<h3>"+res[i]['full_name']+"</h3>";
+					// 	conference = "<p>"+res[i]['conference']+"</p>";;
+					// 	site_name = "<p>"+res[i]['site_name']+"</p>";
+					// 	city = "<p>"+res[i]['city']+"</p>";
+					// 	state = "<p>"+res[i]['state']+"</p>";
+
+					// 	$("#info").append(
+					// 		abbr+"<br>"+full_name+"<br>"+conference+"<br>"+site_name+"<br>"+city+"<br>"+state);
+					// };
+				}, "JSON");
+			});
+		</script>
 	</head>
 	<body>
 		<div id="wrapper">
-			<div id="info">
-				{{ response }}
-			</div>
+			<div id="info"></div>
+			<div id="user_team"></div>
 		</div>
 	</body>
 </html>
