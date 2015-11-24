@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Gotta Catch em All</title>
+	<link rel="stylesheet" type="text/css" href="css/logos.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var logos = ""
+			for(i = 1; i <= 30; i++) {
+				logos += "<img id=" + i + " src=img/nbalogo/" + i + ".jpg>";
+			}
+			$('#pokemon').html(logos);
+			$(document).on('click', '#pokemon img', function(){
+				var id = this.id
+				$.get("http://pokeapi.co/api/v1/pokemon/" + id, function(res) {
+					var html_str = ""
+					html_str += "<h1>" + res.name + "</h1>"
+					html_str += "<h4>Types</h4>";
+					html_str += "<ul>";
+					for(i=0; i < res.types.length; i++){
+						html_str += "<li>" + res.types[i].name + "</li>";
+					}
+					html_str +="</ul>";
+					html_str +="<h4>Height</h4>";
+					html_str += res.height;
+					html_str +='<h4>Weight</h4>';
+					html_str += res.weight;
+					$('#pokedex').html(html_str);
+				}, "json");		
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class='container'>
+		<div class='Jumbotron'>
+			<h1>SELECT YOUR TEAM:</h1>
+		</div>
+		<div id ='pokemon'></div>
+		<div id='pokedex'></div>
+	</div>
+</body>
+</html>
