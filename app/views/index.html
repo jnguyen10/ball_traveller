@@ -1,41 +1,236 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset='utf-8'>
-		<title>Ball Traveler</title>
-		<link rel="stylesheet" href="static/css/styles.css" type="text/css">
-		<script src="https://code.jquery.com/jquery-2.1.3.js"></script>
-		// <script>
-		// 	$(document).ready(function(){
+<html lang="en">
 
-		// 		$.get("/retrieve_teams", function(res){
-		// 			console.log(res);
-		// 			// var abbr, full_name, conference, site_name, city, state
+<head>
 
-		// 			// for (var i=0; i < res.length; i++){
-		// 			// 	abbr = "<h2>"+res['abbreviation']+"</h2>";
-		// 			// 	full_name = "<h3>"+res['full_name']+"</h3>";
-		// 			// 	conference = "<p>"+res['conference']+"</p>";;
-		// 			// 	site_name = "<p>"+res['site_name']+"</p>";
-		// 			// 	city = "<p>"+res['city']+"</p>";
-		// 			// 	state = "<p>"+res['state']+"</p>";
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-		// 			// 	$("#info").html(
-		// 			// 		"<div id='info'>"+abbr+"<br>"+full_name+"<br>"+conference+"<br>"+site_name+"<br>"+city+"<br>"+state+"</div>");
-		// 			}, "JSON");
-		// 	});
-		// </script>
-	</head>
-	<body>
-		<div id="wrapper">
-			<div id="info">
-				{{ response }}
-			</div>
-		</div>
-	</body>
+    <title>Full Slider - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../static/css/full-slider.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Ball Travellers</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+                <div id ='login' style='color: #9d9d9d'>
+                    <form style='margin-left: 300px; display: inline-block; margin-top: 13px'>
+                        <input type='text' name='email' placeholder='Email Address'/>
+                        <input type='password' name='password' placeholder='Password'/>
+                        <input type='submit' name='submit' value='Login' style='btn btn-default btn-sm'/>
+                    </form>
+                    <button stype='display: inline-block'><a href="#">Register</a></button>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Full Page Image Background Carousel Header -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+
+        </ol>
+
+        <!-- Wrapper for Slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <!-- Set the first background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('../static/img/main.jpg');">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 style='margin-top:60px; color: white' class ="tagline">Ball Travellers</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-caption">
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the second background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('../static/img/curry.jpg');">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 style='margin-top:60px; color: white' class ="tagline">Get Directions To Your Favorite Team's Game!</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-caption">
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('../static/img/lebron.jpg');">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 style='margin-top:60px; color: white' class ="tagline">Get Tickets To The Game</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-caption">
+                </div>
+            </div>
+             <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('../static/img/kobe.jpeg');">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 style='margin-top:60px; color: white' class ="tagline">Get a Flight To The Game</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-caption">
+                </div>
+            </div>
+             <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('../static/img/garnett.jpg');">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 style='margin-top:60px; color: white' class ="tagline">Ball Travellers</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-caption">
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+
+    </header>
+
+    <div class="container">
+
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-8">
+                <h2>What We Do</h2>
+                <p>We help you find when your favorte NBA teams are playing and help get you to the game.</p>
+                <p>At Ball Travellers our goal is to simplify the process of going to your favorite NBA team's game by providing all the resources you need.    
+                </p>
+                <p>
+                    <a class="btn btn-default btn-lg" href="#">Sign up Today! &raquo;</a>
+                </p>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <img class="img-circle img-responsive img-center" src="../static/img/stadium.jpg" alt="">
+                <h2>Get Tickets</h2>
+                <p>Find when your team is playing and Get Tickets to the next game!</p>
+            </div>
+            <div class="col-sm-4">
+                <img class="img-circle img-responsive img-center" src="../static/img/staples.png" alt="">
+                <h2>Driving Directions</h2>
+                <p>If you live close by, we will get you driving directions to the game.</p>
+            </div>
+            <div class="col-sm-4">
+                <img class="img-circle img-responsive img-center" src="../static/img/flight.png" alt="">
+                <h2>Find Flights</h2>
+                <p>Favorite team in another city? We will help you find the cheapest flight to your game.</p>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Ball Travellers 2015</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
 </html>
 
+    <!-- /.container -->
 
+    <!-- jQuery -->
+    <script src="../static/js/jquery.js"></script>
 
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../static/js/bootstrap.min.js"></script>
 
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
 
+</body>
+
+</html>

@@ -27,24 +27,6 @@ class NBA(Controller):
         A loaded model is accessible through the models attribute 
         self.models['WelcomeModel'].get_all_users()
         """
-        url = "https://erikberg.com/nba/teams.json"
-        headers = {'User-agent': "MyRobot:1.0 email@example.com"}
-        req = urllib2.Request(url, headers=headers)
-        response = urllib2.urlopen(req).read()
 
-        return self.load_view('index.html', response=response)
+        return self.load_view('index.html')
 
-    def retrieve_teams(self):
-        print "RETRIEVING TEAMS"
-
-        url = "https://erikberg.com/nba/teams.json"
-        headers = {'User-agent': "MyRobot:1.0 email@example.com"}
-        req = urllib2.Request(url, headers=headers)
-        response = urllib2.urlopen(req).read()
-
-
-        # notice this is 'requests' not 'request'
-        # we are using the request modules, 'get' function to send a request from our controller
-        # then we use ".content" to get the content we are looking for
-
-        return self.load_view('index.html', response=response)

@@ -3,13 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Gotta Catch em All</title>
-	<link rel="stylesheet" type="text/css" href="css/logos.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/logos.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var logos = ""
 			for(i = 1; i <= 30; i++) {
-				logos += "<img id=" + i + " src=img/nbalogo/" + i + ".jpg>";
+				logos += "<img id=" + i + " src=../static/img/nbalogo/" + i + ".jpg>";
 			}
 			$('#pokemon').html(logos);
 			$(document).on('click', '#pokemon img', function(){
