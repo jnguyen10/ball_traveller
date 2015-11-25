@@ -40,9 +40,8 @@ class NBA(Controller):
 
         print "TEAM DATA:", team_data
 
-
         url = team_data[0]['link']
-        team = team_data[0]['name']
+        session['team'] = team_data[0]['name']
 
         response = requests.get(url).content
 
@@ -54,6 +53,9 @@ class NBA(Controller):
         if result['status']:
             session['id'] = result['user']['id']
             session['username'] = result['user']['username']
+            session['street'] = result['user']['street']
+            session['city'] = result['user']['city']
+            session['state'] = result['user']['state']
             return self.load_view('logos.html')
         else:
             for msg in result['errors']:
@@ -64,6 +66,11 @@ class NBA(Controller):
         user_info = request.form
         result = self.models['NBAmodel'].sign_in(user_info)
         if result['status'] is True:
+            session['id'] = result['user']['id']
+            session['username'] = result['user']['username']
+            session['street'] = result['user']['street']
+            session['city'] = result['user']['city']
+            session['state'] = result['user']['state']
             return self.load_view('logos.html')
         else:
             flash('Invalid email or password')
@@ -71,5 +78,30 @@ class NBA(Controller):
 
     def register(self):
         return self.load_view('register.html')
+
+    def get_directions(self, arena):
+
+        print arena
+        street = session['street']
+        city = session['city']
+        state = session['state']
+
+        print street, 
+        print city, state
+
+
+
+
+
+        return self.load_view('directions.html', arena=arena, street=street, city=city, state=state)
+
+    def reset(self):
+        session['id'] = ''
+        session['username'] = ''
+        session['street'] = ''
+        session['city'] = ''
+        session['state'] = ''
+
+        return redirect('/')
 
 

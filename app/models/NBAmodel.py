@@ -79,14 +79,14 @@ class NBAmodel(Model):
         insert_data = [user_id[0]['id'], user_info['street'], user_info['city'], user_info['state']]
         self.db.query_db(insert_query, insert_data)
 
-        get_user_query = "SELECT * FROM users ORDER BY id DESC LIMIT 1"
+        get_user_query = "SELECT * FROM users LEFT JOIN locations ON users.id = locations.user_id ORDER BY id DESC LIMIT 1"
         user = self.db.query_db(get_user_query)
 
         return {'status': True, 'user': user[0]}
 
     def sign_in(self, user_info):
         password = user_info['password']
-        sign_in_query = 'SELECT * FROM users WHERE email = %s LIMIT 1'
+        sign_in_query = 'SELECT * FROM users LEFT JOIN locations ON users.id = locations.user_id WHERE email = %s LIMIT 1'
         user_email = [user_info['email']]
         user = self.db.query_db(sign_in_query, user_email)
         if user and self.bcrypt.check_password_hash(user[0]['password'], user_info['password']):

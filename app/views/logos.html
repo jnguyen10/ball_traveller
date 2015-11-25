@@ -3,9 +3,24 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Ball Traveller</title>
-	<link rel="stylesheet" type="text/css" href="../static/css/logos.css">
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://code.jquery.com/jquery-2.1.3.js"></script>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Ball Traveller</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../static/css/full-slider.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../static/css/logos.css">
+
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var logos = ""
@@ -17,21 +32,21 @@
 			$('#nbalogos').html(logos);
 
 
-
 			$(document).on('click', '#nbalogos img', function(){
 				var id = this.id
 				$.get("/retrieve_listings/"+this.id, function(res) {
 					var event_info = ''
+					var street = '{{ session['street'] }}';
 					// LOOP TO GET A TEAM LISTING
 					$("#team_logo").html("<img id=" + id + " src=../static/img/nbalogo/" + id + ".jpg>");
 					$("#team_info").html("<h1>"+ res['EventListings'][0]['EventTypeName'] + "</h1>");
 
 					for (var i=0; i < res['EventListings'].length; i++){
-						event_info += "<button class='schedule_btn' id='btn"+i+"'><p>"+res['EventListings'][i]['EventName']+"";
+						event_info += "<a href='/driving_directions/"+res['EventListings'][i]['VenueName']+"&nbsp;"+res['EventListings'][i]['City']+"&nbsp;"+res['EventListings'][i]['State']+"'><button class='schedule_btn' id='btn"+i+" '><p>"+res['EventListings'][i]['EventName']+"";
 						event_info += "<br>"+res['EventListings'][i]['Event_Date']+"";
 						event_info += "<br>"+res['EventListings'][i]['VenueName']+"";
 						event_info += "<br>"+res['EventListings'][i]['City']+"";
-						event_info += "<br>"+res['EventListings'][i]['State']+"</p><button>";
+						event_info += "<br>"+res['EventListings'][i]['State']+"</p></button></a>";
 						};
 
 					$("#team_schedule").html(event_info);
@@ -43,6 +58,22 @@
 	</script>
 </head>
 <body>
+	<div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Ball Travellers</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <p class="navbar-brand">Welcome, {{ session['username'] }}</p>
+                <div id ='logout' style='color: #9d9d9d'>
+                    <button style='margin-left: 500px; display: inline-block; margin-top: 13px'><a href="/reset">Logout</a></button>
+                </div>
+            </div>
 	<div class='container'>
 		<div class='Jumbotron'>
 			<h1 style='display:inline-block'>SELECT YOUR TEAM:</h1>

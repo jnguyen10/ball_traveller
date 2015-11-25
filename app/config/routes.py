@@ -21,6 +21,10 @@ routes['GET']['/retrieve_listings/<int:id>'] = 'NBA#retrieve_listings'
 routes['POST']['/nba'] = 'NBA#create'
 routes['POST']['/sign_in'] = 'NBA#sign_in'
 routes['GET']['/register'] = 'NBA#register'
+routes['GET']['/reset'] = 'NBA#reset'
+routes['GET']['/driving_directions/<arena>'] = 'NBA#get_directions'
+
+
 
 """
     You can add routes and specify their handlers as follows:
