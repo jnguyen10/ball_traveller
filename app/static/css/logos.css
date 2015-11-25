@@ -1,19 +1,26 @@
 
-#pokemon{
-	width: 1000px;
+#nbalogos{
+	width: 60%;
 	display:inline-block;
 }
 
-#pokedex{
-	width: 200px;
+#team_display{
+	width: 20%;
+	height: 80%;
 	display: inline-block;
 	border: 8px solid black;
 	vertical-align: top;
 	padding: 20px;
+	position: fixed;
+	overflow: scroll;
+}
+.schedule_btn{
+	width: 240px;
+	height: 120px;
 }
 
 img{
-	width:150px;
-	height: 120px;
+	width: 100px;
+	height: 80px;
 	margin: 5px;
 }

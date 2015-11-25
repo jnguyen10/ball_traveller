@@ -18,7 +18,8 @@ from system.core.router import routes
 """
 routes['default_controller'] = 'NBA'
 routes['GET']['/retrieve_teams'] = 'NBA#retrieve_teams'
-routes['GET']['/retrieve_listings'] = 'NBA#retrieve_listings'
+routes['GET']['/retrieve_listings/<int:id>'] = 'NBA#retrieve_listings'
+routes['GET']['/nba/logos'] = 'NBA#logos'
 """
     You can add routes and specify their handlers as follows:
 

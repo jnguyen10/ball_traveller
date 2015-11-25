@@ -22,6 +22,7 @@ class NBA(Controller):
 
             self.load_model('WelcomeModel')
         """
+        self.load_model('NBAmodel')
 
     """ This is an example of a controller method that will load a view for the client """
     def index(self):
@@ -32,8 +33,13 @@ class NBA(Controller):
 
         return self.load_view('index.html')
 
+    def logos(self):
+
+        return self.load_view('logos.html')
+
     def retrieve_teams(self):
-        print "Retrieve Teams"
+        pass
+        # print "Retrieve Teams"
 
 
 
@@ -44,14 +50,17 @@ class NBA(Controller):
 
         # return response
 
-    def retrieve_listings(self):
+    def retrieve_listings(self, id):
         print "Retrieve Listings"
+        team_data = self.models['NBAmodel'].find_team_link(id)
 
-        url = "https://www.ticketcity.com/catalog/events/performer/1354/11-24-2015/11-24-2033?PageNum=1&PageSize=25"
+        print "TEAM DATA:", team_data
+
+
+        url = team_data[0]['link']
+        team = team_data[0]['name']
 
         response = requests.get(url).content
-
-        # print response
 
         return response
 

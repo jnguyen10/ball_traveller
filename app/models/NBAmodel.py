@@ -25,3 +25,10 @@ class NBAmodel(Model):
     If you have enabled the ORM you have access to typical ORM style methods.
     See the SQLAlchemy Documentation for more information on what types of commands you can run.
     """
+
+    def find_team_link(self,id):
+        query = "SELECT name, link FROM listings WHERE id = %s"
+        data = [id]
+
+        return self.db.query_db(query,data)
+
