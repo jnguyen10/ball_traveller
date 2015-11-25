@@ -18,6 +18,9 @@ from system.core.router import routes
 """
 routes['default_controller'] = 'NBA'
 routes['GET']['/retrieve_teams'] = 'NBA#retrieve_teams'
+routes['POST']['/nba'] = 'NBA#create'
+routes['POST']['/sign_in'] = 'NBA#sign_in'
+routes['GET']['/register'] = 'NBA#register'
 """
     You can add routes and specify their handlers as follows:
 

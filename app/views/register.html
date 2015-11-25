@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+<head>
+	<title>Login and Registration</title>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class = 'container'>
+		<div class='jumbotron' style='background-color: #222'>
+			<h1 style ='text-align: center; color: white'>Ball Travellers</h1>
+		<div id ='regform' style='display:inline-block'>	
+			<h2 style ='text-align: center; color: white'>Register</h2>
+			{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for msg in messages %}
+				<p style='color:red; font-size=10px'>{{ msg }}</p>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+			<form action='/nba' method='post' style='width: 280px'>
+				<div class='form-group'>
+					<input type='text' name='username' class='form-control' placeholder='User Name'>
+				</div>
+				<div class='form-group'>
+					<input type='text' name ='email' class='form-control' placeholder='Email'>
+				</div>
+				<div class='form-group'>
+					<input type='text' name ='street' class='form-control' placeholder='Street'>
+				</div>
+				<div class='form-group'>
+					<input type='text' name ='city' class='form-control' placeholder='City'>
+				</div>
+				<div class='form-group'>
+					<input type='text' name ='state' class='form-control' placeholder='State'>
+				</div>
+				<div class='form-group'>
+					<input type='password' name ='password' class='form-control' placeholder='Password'>
+				</div>
+				<div class='form-group'>
+					<input type='password' placeholder='Confirm Password' class='form-control' name ='password_confirm'>
+				</div>
+				<input type='submit' name='submit' class ='btn btn-default' value='Register'>
+			</form>
+		</div>
+		<div style='vertical-align:top; display: inline-block; margin-top: 20px'>
+			<img src='../static/img/dwight1.png' style='margin-left: 20px'/>
+			<img src='../static/img/dwight2.jpg' style='margin-left: 20px'/>
+			<img src='../static/img/dwight3.jpg' style='margin-left: 20px'/>
+			<img src='../static/img/dwight4.jpg' style='margin-left: 20px'/>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

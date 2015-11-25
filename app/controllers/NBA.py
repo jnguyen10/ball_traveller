@@ -20,7 +20,7 @@ class NBA(Controller):
 
             self.load_model('WelcomeModel')
         """
-
+        self.load_model('NBAmodel')
     """ This is an example of a controller method that will load a view for the client """
     def index(self):
         """ 
@@ -29,4 +29,30 @@ class NBA(Controller):
         """
 
         return self.load_view('index.html')
+
+    def create(self):
+        user_info = request.form
+        result = self.models['NBAmodel'].create(user_info)
+        if result['status']:
+            session['id'] = result['user']['id']
+            session['username'] = result['user']['username']
+            return self.load_view('logos.html')
+        else:
+            for msg in result['errors']:
+                flash(msg)
+            return redirect('/register')
+
+    def sign_in(self):
+        user_info = request.form
+        result = self.models['NBAmodel'].sign_in(user_info)
+        if result['status'] is True:
+            # session['id'] = result['user']['id']
+            # session['username'] = result['user']['username']
+            return self.load_view('logos.html')
+        else:
+            flash('Invalid email or password')
+            return redirect('/')
+
+    def register(self):
+        return self.load_view('register.html')
 
