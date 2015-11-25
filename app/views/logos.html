@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Gotta Catch em All</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/logos.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var logos = ""
+			for(i = 1; i <= 30; i++) {
+				logos += "<img id=" + i + " src=../static/img/nbalogo/" + i + ".jpg>";
+			}
+
+			$.get("/retrieve_listings", function(res){
+					var event_name, event_date, venue, city, state
+					// LOOP TO GET A TEAM LISTING
+					for (var i=0; i < res['EventListings'].length; i++){
+						event_name = "<p>"+res['EventListings'][i]['EventName']+"</p>";
+						event_date = "<p>"+res['EventListings'][i]['Event_Date']+"</p>";
+						venue = "<p>"+res['EventListings'][i]['VenueName']+"</p>";
+						city = "<p>"+res['EventListings'][i]['City']+"</p>";
+						state = "<p>"+res['EventListings'][i]['State']+"</p>";
+
+						$("#user_team").append(
+							"<div class='team_schedule'>"+event_name+"<br>"+event_date+"<br>"+venue+"<br>"+city+"<br>"+state+"</div>");
+					};
+
+
+
+					// LOOP TO GET TEAM INFO
+					// for (var i=0; i < res.length; i++){
+					// 	abbr = "<h2>"+res[i]['abbreviation']+"</h2>";
+					// 	full_name = "<h3>"+res[i]['full_name']+"</h3>";
+					// 	conference = "<p>"+res[i]['conference']+"</p>";;
+					// 	site_name = "<p>"+res[i]['site_name']+"</p>";
+					// 	city = "<p>"+res[i]['city']+"</p>";
+					// 	state = "<p>"+res[i]['state']+"</p>";
+
+					// 	$("#info").append(
+					// 		abbr+"<br>"+full_name+"<br>"+conference+"<br>"+site_name+"<br>"+city+"<br>"+state);
+					// };
+				}, "JSON");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			$('#pokemon').html(logos);
+			$(document).on('click', '#pokemon img', function(){
+				var id = this.id
+				$.get("http://pokeapi.co/api/v1/pokemon/" + id, function(res) {
+					var html_str = ""
+					html_str += "<h1>" + res.name + "</h1>"
+					html_str += "<h4>Types</h4>";
+					html_str += "<ul>";
+					for(i=0; i < res.types.length; i++){
+						html_str += "<li>" + res.types[i].name + "</li>";
+					}
+					html_str +="</ul>";
+					html_str +="<h4>Height</h4>";
+					html_str += res.height;
+					html_str +='<h4>Weight</h4>';
+					html_str += res.weight;
+					$('#pokedex').html(html_str);
+				}, "json");		
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class='container'>
+		<div class='Jumbotron'>
+			<h1>SELECT YOUR TEAM:</h1>
+		</div>
+		<div id ='pokemon'></div>
+		<div id='pokedex'></div>
+	</div>
+</body>
+</html>

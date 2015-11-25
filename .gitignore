@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 app/controllers/NBA_DRAFT.py
 venv/
 .DS_Store
+=======
+venv/*
+*.DS_Store
+>>>>>>> 246b9e563a6b8afa825e6532094d2efa5c5ab878

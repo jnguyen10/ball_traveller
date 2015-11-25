@@ -30,7 +30,6 @@ class NBA(Controller):
         self.models['WelcomeModel'].get_all_users()
         """
 
-
         return self.load_view('index.html')
 
     def retrieve_teams(self):
@@ -45,9 +44,6 @@ class NBA(Controller):
 
         # return response
 
-    def data_scraping(self):
-        pass
-
     def retrieve_listings(self):
         print "Retrieve Listings"
 
@@ -58,6 +54,5 @@ class NBA(Controller):
         # print response
 
         return response
-
 
 
