@@ -17,9 +17,11 @@ from system.core.router import routes
     The automatically generated routes respond to all of the http verbs (GET, POST, PUT, PATCH, DELETE)
 """
 routes['default_controller'] = 'NBA'
-routes['GET']['/retrieve_teams'] = 'NBA#retrieve_teams'
 routes['GET']['/retrieve_listings/<int:id>'] = 'NBA#retrieve_listings'
-routes['GET']['/nba/logos'] = 'NBA#logos'
+routes['POST']['/nba'] = 'NBA#create'
+routes['POST']['/sign_in'] = 'NBA#sign_in'
+routes['GET']['/register'] = 'NBA#register'
+
 """
     You can add routes and specify their handlers as follows:
 

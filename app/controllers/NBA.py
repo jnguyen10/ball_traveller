@@ -33,22 +33,6 @@ class NBA(Controller):
 
         return self.load_view('index.html')
 
-    def logos(self):
-
-        return self.load_view('logos.html')
-
-    def retrieve_teams(self):
-        pass
-        # print "Retrieve Teams"
-
-
-
-        # url = "https://erikberg.com/nba/teams.json"
-        # headers = {'User-agent': "MyRobot:1.0 email@example.com"}
-        # req = urllib2.Request(url, headers=headers)
-        # response = urllib2.urlopen(req).read()
-
-        # return response
 
     def retrieve_listings(self, id):
         print "Retrieve Listings"
@@ -63,5 +47,29 @@ class NBA(Controller):
         response = requests.get(url).content
 
         return response
+
+    def create(self):
+        user_info = request.form
+        result = self.models['NBAmodel'].create(user_info)
+        if result['status']:
+            session['id'] = result['user']['id']
+            session['username'] = result['user']['username']
+            return self.load_view('logos.html')
+        else:
+            for msg in result['errors']:
+                flash(msg)
+            return redirect('/register')
+
+    def sign_in(self):
+        user_info = request.form
+        result = self.models['NBAmodel'].sign_in(user_info)
+        if result['status'] is True:
+            return self.load_view('logos.html')
+        else:
+            flash('Invalid email or password')
+            return redirect('/')
+
+    def register(self):
+        return self.load_view('register.html')
 
 

@@ -17,52 +17,6 @@
 			$('#nbalogos').html(logos);
 
 
-			// var abbr = ""
-			// for(i = 1; i <= 30; i++) {
-
-			// 	$.get("/retrieve_teams", function(res){
-			// 			abbr = res[i]['abbreviation'];
-			// 			console.log(abbr)
-
-			// 			logos += "<img id=" + abbr + " src=../static/img/nbalogo/" + i + ".jpg>";
-
-			// 	}, "JSON");
-
-				
-			// }
-			// $('#nbalogos').html(logos);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			// $.get("/retrieve_teams", function(res){
-			// 		var abbr, full_name, conference, city, state
-					
-			// 		// LOOP TO GET TEAM INFO
-			// 		for (var i=0; i < res.length; i++){
-			// 			abbr = "<h2>"+res[i]['abbreviation']+"</h2>";
-			// 			full_name = "<h3>"+res[i]['full_name']+"</h3>";
-			// 			conference = "<p>"+res[i]['conference']+"</p>";;
-			// 			site_name = "<p>"+res[i]['site_name']+"</p>";
-			// 			city = "<p>"+res[i]['city']+"</p>";
-			// 			state = "<p>"+res[i]['state']+"</p>";
-
-			// 			$("#info").append(
-			// 				abbr+"<br>"+full_name+"<br>"+conference+"<br>"+site_name+"<br>"+city+"<br>"+state);
-			// 		};
-			// 	}, "JSON");
-
-
 
 			$(document).on('click', '#nbalogos img', function(){
 				var id = this.id
@@ -85,33 +39,13 @@
 				}, "json");
 			});
 
-
-
-
-
-			// $("img").click(function(){
-			// 		$.get("/retrieve_listings", function(res){
-			// 		var event_name, event_date, venue, city, state
-			// 		// LOOP TO GET A TEAM LISTING
-			// 		for (var i=0; i < res['EventListings'].length; i++){
-			// 			event_name = "<p>"+res['EventListings'][i]['EventName']+"</p>";
-			// 			event_date = "<p>"+res['EventListings'][i]['Event_Date']+"</p>";
-			// 			venue = "<p>"+res['EventListings'][i]['VenueName']+"</p>";
-			// 			city = "<p>"+res['EventListings'][i]['City']+"</p>";
-			// 			state = "<p>"+res['EventListings'][i]['State']+"</p>";
-
-			// 			$("#user_team").append(
-			// 				"<div class='team_schedule'>"+event_name+"<br>"+event_date+"<br>"+venue+"<br>"+city+"<br>"+state+"</div>");
-			// 			};
-			// 		}, "JSON");
-			// 	});
 		});
 	</script>
 </head>
 <body>
 	<div class='container'>
 		<div class='Jumbotron'>
-			<h1>SELECT YOUR TEAM:</h1>
+			<h1 style='display:inline-block'>SELECT YOUR TEAM:</h1>
 		</div>
 		<div id='nbalogos'></div>
 		<div id='team_display'>

@@ -55,12 +55,19 @@
                     </li>
                 </ul>
                 <div id ='login' style='color: #9d9d9d'>
-                    <form style='margin-left: 300px; display: inline-block; margin-top: 13px'>
+                    <form action='/sign_in' method='post' style='margin-left: 300px; display: inline-block; margin-top: 13px'>
                         <input type='text' name='email' placeholder='Email Address'/>
                         <input type='password' name='password' placeholder='Password'/>
                         <input type='submit' name='submit' value='Login' style='btn btn-default btn-sm'/>
                     </form>
-                    <button stype='display: inline-block'><a href="#">Register</a></button>
+                    <button stype='display: inline-block'><a href="/register">Register</a></button>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p style='color:red; margin-left: 730px'>{{ msg }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
                 </div>
             </div>
         </div>
@@ -164,7 +171,7 @@
                 <p>At Ball Travellers our goal is to simplify the process of going to your favorite NBA team's game by providing all the resources you need.    
                 </p>
                 <p>
-                    <a class="btn btn-default btn-lg" href="#">Sign up Today! &raquo;</a>
+                    <a class="btn btn-info btn-lg" href="/register">Sign up Today! &raquo;</a>
                 </p>
             </div>
         </div>
@@ -176,7 +183,7 @@
             <div class="col-sm-4">
                 <img class="img-circle img-responsive img-center" src="../static/img/stadium.jpg" alt="">
                 <h2>Get Tickets</h2>
-                <p>Find when your team is playing and Get Tickets to the next game!</p>
+                <p>Find when your team is playing and get tickets to the next game!</p>
             </div>
             <div class="col-sm-4">
                 <img class="img-circle img-responsive img-center" src="../static/img/staples.png" alt="">
